@@ -24,3 +24,10 @@ jobs:
       - name: runt pytest 
         working-directory: backend
         run: pytest 
+
+      - name: install bandit
+        run: pip install bandit 
+
+      - name: run bandit against backend
+        working-directory: bandit
+        run: bandit
