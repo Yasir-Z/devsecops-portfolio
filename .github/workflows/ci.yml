@@ -30,4 +30,4 @@ jobs:
 
       - name: run bandit against backend
         working-directory: backend
-        run: bandit
+        run: bandit -r 
