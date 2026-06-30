@@ -21,13 +21,10 @@ jobs:
         working-directory: backend
         run: pip install -r requirements.txt
 
-      - name: runt pytest 
+      - name: Run pytest 
         working-directory: backend
         run: pytest 
 
-      - name: install bandit
-        run: pip install bandit 
-
-      - name: run bandit against backend
+      - name: Run Bandit Security Scan
         working-directory: backend
         run: bandit -r . 
