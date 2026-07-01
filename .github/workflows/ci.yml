@@ -29,6 +29,10 @@ jobs:
         working-directory: backend
         run: bandit -r .
 
+      - name: Run Dependency Vulnerability Test
+        run: pip-audit
+
       - name: Run secret leak test
-        working-directory: backend
-        run: gitleaks detect --source . -v 
+        uses: gitleaks/gitleaks-action@v2
+        env: 
+          GITHUB_TOKEN: ${{ secrets.cici-token }}
