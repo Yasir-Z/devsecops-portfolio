@@ -40,3 +40,13 @@ jobs:
       - name: Build Docker image
         working-directory: backend
         run: docker build -t devsecops-backend:v1 .    
+
+      - name: Scan the built image
+        uses: aquasecurity/trivy-action@master
+        with: 
+          image-ref: devsecops-backend:v1
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          exit-code: '1'
+          severity: 'HIGH,CRITICAL'
+          ignore-unfixed: true
